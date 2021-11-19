@@ -4,6 +4,7 @@
       <carousel-main/>
   </div>
   <div class='main2'>
+    <h1 class="title">Populair events</h1>
    <CarouselMini/>
  </div>
 </div>
@@ -32,6 +33,9 @@ export default {
 .main2{
   padding-right: 5%;
   padding-left: 5%;
+}
+.title {
+  color: #FFFFFF;
 }
 
 </style>
