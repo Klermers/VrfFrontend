@@ -88,6 +88,18 @@
             row-height="40"
           ></v-textarea>
         </v-col>
+        <v-col
+            cols="12"
+            sm="3"
+          >
+            <FormulateInput
+            type="image"
+            name="headshot"
+            label="Select an image to upload"
+             help="Select a png, jpg or gif to upload."
+            validation="mime:image/jpeg,image/png,image/gif"
+            />
+          </v-col>
         </v-row>
       </v-container>
     </v-form>
