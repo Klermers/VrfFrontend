@@ -1,16 +1,37 @@
 <template>
-<div/>
+<div>
+  <div class='main'>
+      <carousel-main/>
+  </div>
+  <div class='main2'>
+   <CarouselMini/>
+ </div>
+</div>
 </template>
 
 <script>
+import CarouselMain from './CarouselMain.vue';
+import CarouselMini from './CarouselMini.vue'
 export default {
   name: 'Homepage',
 
   components: {
+    CarouselMain,
+    CarouselMini
   },
-
-  data: () => ({
-    //
-  }),
+  
 };
 </script>
+
+<style scoped>
+.main{
+  padding-right: 15%;
+  padding-left: 20%;
+}
+
+.main2{
+  padding-right: 5%;
+  padding-left: 5%;
+}
+
+</style>

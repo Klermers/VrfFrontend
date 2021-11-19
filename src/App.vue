@@ -1,5 +1,5 @@
 <template>
-  <v-app id='app'>
+  <v-app id='app' style="background: #140D2F;">
     <nav-bar></nav-bar>
     <v-content transition="slide-x-transition">
       <router-view></router-view>
