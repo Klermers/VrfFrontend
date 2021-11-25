@@ -1,7 +1,7 @@
 <template>
 <v-container class="container">
 <v-data-iterator
-        :items="items"
+        :items="events"
         :items-per-page.sync="itemsPerPage"
         :page.sync="page"
         :search="search"
@@ -24,7 +24,8 @@
                 flat
                 solo-inverted
                 hide-details
-                :items="keys"
+                :items="worlds"
+                item-text="world"
                 label="World"
               ></v-select>
               <v-spacer></v-spacer>
@@ -33,7 +34,8 @@
                 flat
                 solo-inverted
                 hide-details
-                :items="keys"
+                :items="categories"
+                item-text="categorie"
                 label="Category"
               ></v-select>
               <v-spacer></v-spacer>
@@ -42,7 +44,6 @@
                 flat
                 solo-inverted
                 hide-details
-                :items="keys"
                 label="Date Event"
               ></v-select>
               <v-spacer></v-spacer>
@@ -51,7 +52,6 @@
                 flat
                 solo-inverted
                 hide-details
-                :items="keys"
                 label="Created"
               ></v-select>
               <v-spacer></v-spacer>
@@ -60,7 +60,6 @@
                 flat
                 solo-inverted
                 hide-details
-                :items="keys"
                 label="Views"
               ></v-select>
               <v-spacer></v-spacer>
@@ -68,7 +67,7 @@
           </v-toolbar>
   
       <v-list three-line>
-        <template v-for="(item, index) in items">
+        <template v-for="(item, index) in events">
           <v-subheader
             v-if="item.header"
             :key="item.header"
@@ -166,7 +165,7 @@ export default {
         'Calcium',
         'Iron',
       ],
-      items: [
+      events: [
         {
           name: '@/assets/user.png',
           calories: 159,
@@ -178,11 +177,58 @@ export default {
           iron: '1%',
         },
       ],
+      worlds:[
+        {
+          id:1,
+          world:"Drinking Night"
+        },
+                {
+          id:2,
+          world:"Black Cat"
+        },
+                {
+          id:3,
+          world:"Midnight Rooftop"
+        },
+                {
+          id:4,
+          world:"Murder 4"
+        },
+                {
+          id:5,
+          world:"Golf us"
+        },
+      ],
+        categories:[
+        {
+          id:1,
+          categorie:"Sport"
+        },
+                {
+          id:2,
+          categorie:"Entertianment"
+        },
+                {
+          id:3,
+          categorie:"Games"
+        },
+                {
+          id:4,
+          categorie:"Movies"
+        },
+                {
+          id:5,
+          categorie:"Relaxment"
+        },
+      ],
+      worldnames:[
+
+      ]
     }
   },
   computed: {
     numberOfPages () {
-      return Math.ceil(this.items.length / this.itemsPerPage)
+      return Math.ceil(this.events.length / this.itemsPerPage)
     },
     filteredKeys () {
       return this.keys.filter(key => key !== 'Name')
