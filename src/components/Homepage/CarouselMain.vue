@@ -1,33 +1,141 @@
 <template>
-    <v-carousel v-model="model">
-      <v-carousel-item
-        v-for="(color, i) in colors"
-        :key="color"
-      >
-        <v-sheet
-          :color="color"
-          height="100%"
+<VueSlickCarousel class="carousel" v-bind="settings">
+ <v-card
+      class="event mx-auto"
+      max-width="1200"
+      max-height="400"
+      color="#04020C"
+      outlined
+    >
+      <v-list-item class="box" >
+        <v-list-item-avatar
           tile
-        >
-          <v-row
-            class="fill-height"
-            align="center"
-            justify="center"
-          >
-            <div class="text-h2">
-              Slide {{ i + 1 }}
-            </div>
-          </v-row>
-        </v-sheet>
-      </v-carousel-item>
-    </v-carousel>
+          height="360px"
+          width="830px"
+          max-height="360px"
+          max-width="830px"
+        ><v-img src=@/assets/user.png></v-img>
+        </v-list-item-avatar>
+        <v-list-item-content>
+          <v-list-item-title class="title mb-1">Nike epic react</v-list-item-title>
+          <div class="title3" >content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react v content for Nike epic react content for Nike epic react v content for Nike epic react</div>
+        </v-list-item-content>      
+      </v-list-item>
+    </v-card>
+ <v-card
+      class="event mx-auto"
+      max-width="1200"
+      max-height="400"
+      color="#04020C"
+      outlined
+    >
+      <v-list-item>
+        <v-list-item-avatar
+          tile
+          height="360px"
+          width="830px"
+          max-height="360px"
+          max-width="830px"
+        ><v-img src=@/assets/user.png></v-img>
+        </v-list-item-avatar>
+        <v-list-item-content>
+          <v-list-item-title class="title mb-1">Nike epic react</v-list-item-title>
+          <div class="title3" >content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react v content for Nike epic react content for Nike epic react v content for Nike epic react</div>
+        </v-list-item-content>      
+      </v-list-item>
+    </v-card>
+     <v-card
+      class="event mx-auto"
+      max-width="1200"
+      max-height="400"
+      color="#04020C"
+      outlined
+    >
+      <v-list-item>
+        <v-list-item-avatar
+          tile
+          height="360px"
+          width="830px"
+          max-height="360px"
+          max-width="830px"
+        ><v-img src=@/assets/user.png></v-img>
+        </v-list-item-avatar>
+        <v-list-item-content>
+          <v-list-item-title class="title mb-1">Nike epic react</v-list-item-title>
+          <div class="title3" >content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react v content for Nike epic react content for Nike epic react v content for Nike epic react</div>
+        </v-list-item-content>      
+      </v-list-item>
+    </v-card>
+     <v-card
+      class="event mx-auto"
+      max-width="1200"
+      max-height="400"
+      color="#04020C"
+      outlined
+    >
+      <v-list-item>
+        <v-list-item-avatar
+          tile
+          height="360px"
+          width="830px"
+          max-height="360px"
+          max-width="830px"
+        ><v-img src=@/assets/user.png></v-img>
+        </v-list-item-avatar>
+        <v-list-item-content>
+          <v-list-item-title class="title mb-1">Nike epic react</v-list-item-title>
+          <div class="title3" >content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react content for Nike epic react v content for Nike epic react content for Nike epic react v content for Nike epic react</div>
+        </v-list-item-content>      
+      </v-list-item>
+    </v-card>
+    </VueSlickCarousel>
 </template>
 
 <script>
+  import VueSlickCarousel from 'vue-slick-carousel'
+  import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+  // optional style for arrows & dots
+  import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default {
     name: 'CarouselMain',
-    components: {
-        NavBar
+    components: { VueSlickCarousel },
+    data(){
+      return {
+        settings: {
+          arrows: false,
+          dots: true,
+          adaptiveHeight: true
+        },
+      }
     }
 };
 </script>
+
+<style>
+.carousel{
+  height: 400px;
+}
+.slick-dots li.slick-active button:before{
+  opacity: 0.75;
+  color: #FFFFFF;
+}
+.slick-dots li button:before{
+  opacity: 0.25;
+    color: #FFFFFF;
+}
+.event{
+  margin-top: 2%;
+
+}
+.title{
+  color: #FFFFFF;
+}
+.title3{
+  color: #FFFFFF;
+}
+.box {
+  max-height: 400px;
+  overflow-y: auto;
+
+}
+</style>
