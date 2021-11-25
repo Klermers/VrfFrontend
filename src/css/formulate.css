@@ -254,17 +254,17 @@
 }
 
 .formulate-input[data-classification=textarea] textarea::-moz-placeholder {
-    color: #a8a8a8;
+    color: #000000;
     line-height: normal
 }
 
 .formulate-input[data-classification=textarea] textarea:-ms-input-placeholder {
-    color: #a8a8a8;
+    color: #000000;
     line-height: normal
 }
 
 .formulate-input[data-classification=textarea] textarea::placeholder {
-    color: #a8a8a8;
+    color: #000000;
     line-height: normal
 }
 

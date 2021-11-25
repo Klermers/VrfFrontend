@@ -15,7 +15,7 @@
             color="#05020D"
             class="mb-1"
           >
-            <template v-if="$vuetify.breakpoint.mdAndUp">
+            <template>
               <v-select
                 v-model="sortBy"
                 flat
@@ -61,28 +61,6 @@
                 label="Views"
               ></v-select>
               <v-spacer></v-spacer>
-              <v-btn-toggle
-                v-model="sortDesc"
-                mandatory
-              >
-                <v-btn
-                  large
-                  Primary
-                  dark
-                  class="button"
-                  :value="true"
-                >
-                  <v-icon>mdi-arrow-down</v-icon>
-                </v-btn>
-                <v-btn
-                  large
-                  depressed
-                  color="#05020D"
-                  :value="true"
-                >
-                  <v-icon>mdi-arrow-down</v-icon>
-                </v-btn>
-              </v-btn-toggle>
             </template>
           </v-toolbar>
         </template>
@@ -94,8 +72,6 @@
               :key="item.name"
             >
               <v-card color="#04020C">
-                <v-divider></v-divider>
-  
                 <v-list dense>
                   <v-list-item
                     v-for="(key, index) in filteredKeys"
@@ -110,6 +86,31 @@
                     >
                       {{ item[key.toLowerCase()] }}
                     </v-list-item-content>
+                                        <v-list-item-content
+                      class="align-end"
+                      :class="{ 'blue--text': sortBy === key }"
+                    >
+                      {{ item[key.toLowerCase()] }}
+                    </v-list-item-content>
+                                        <v-list-item-content
+                      class="align-end"
+                      :class="{ 'blue--text': sortBy === key }"
+                    >
+                      {{ item[key.toLowerCase()] }}
+                    </v-list-item-content>
+                                        <v-list-item-content
+                      class="align-end"
+                      :class="{ 'blue--text': sortBy === key }"
+                    >
+                      {{ item[key.toLowerCase()] }}
+                    </v-list-item-content>
+                                        <v-list-item-content
+                      class="align-end"
+                      :class="{ 'blue--text': sortBy === key }"
+                    >
+                      {{ item[key.toLowerCase()] }}
+                    </v-list-item-content>
+                    
                   </v-list-item>
                 </v-list>
               </v-card>
