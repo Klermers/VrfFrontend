@@ -1,5 +1,4 @@
 <template>
-
     <v-form style="background: #0B061E;">
       <v-container>
         <v-row>
@@ -84,13 +83,13 @@
             auto-grow
             name="input-7-4"
             label="Description..."
-             rows="8"
+            rows="8"
             row-height="40"
           ></v-textarea>
         </v-col>
         <v-col
-            cols="12"
-            sm="3"
+            cols="3"
+            sm="5"
           >
             <FormulateInput
             type="image"
@@ -98,9 +97,30 @@
             label="Select an image to upload"
              help="Select a png, jpg or gif to upload."
             validation="mime:image/jpeg,image/png,image/gif"
+            multiple= 5
             />
           </v-col>
         </v-row>
+        <row>
+          <v-col
+          class="text-right"
+          cols="12"
+          md="12"
+        >
+        <v-btn
+         depressed
+         color="#FF4E9F"
+        >
+          Cancel
+        </v-btn>
+        <v-btn
+         depressed
+         color="#FF4E9F"
+        >
+          Accept
+        </v-btn>
+        </v-col>
+        </row>
       </v-container>
     </v-form>
 </template>

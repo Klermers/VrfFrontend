@@ -1,5 +1,5 @@
 <template>
-<VueSlickCarousel class="carousel">
+<VueSlickCarousel class="carousel" v-bind="settings">
  <v-card
       class="event mx-auto"
       max-width="1200"
@@ -102,27 +102,26 @@ export default {
     data(){
       return {
         settings: {
-          arrows: true,
+          arrows: false,
           dots: true,
+          adaptiveHeight: true
         },
       }
     }
 };
 </script>
 
-<style scoped>
-.slick-track
-{
-    display: flex !important;
-}
-
-.slick-slide
-{
-    height: 100px;
-}
-.slide{
-  padding-top: 2%;
+<style>
+.carousel{
   height: 400px;
+}
+.slick-dots li.slick-active button:before{
+  opacity: 0.75;
+  color: #FFFFFF;
+}
+.slick-dots li button:before{
+  opacity: 0.25;
+    color: #FFFFFF;
 }
 .event{
   margin-top: 2%;

@@ -1,13 +1,21 @@
 <template>
-<div>
-  <div class='main'>
+<v-row>
+  <v-col 
+  class='main'
+  cols="12"
+  sm="12"
+  >
       <carousel-main/>
-  </div>
-  <div class='main2'>
+  </v-col>
+  <v-col 
+  class='main2'
+  cols="12"
+  sm="12"
+  >
     <h1 class="title">Populair events</h1>
    <CarouselMini/>
- </div>
-</div>
+ </v-col>
+</v-row>
 </template>
 
 <script>
@@ -31,6 +39,7 @@ export default {
 }
 
 .main2{
+  margin-top: 5%;
   padding-right: 5%;
   padding-left: 5%;
 }
