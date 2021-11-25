@@ -10,7 +10,7 @@
       max-width="450"
       max-height="200"
     >
-        <v-img  src=@/assets/user.png></v-img>
+<v-img style="outline: none;width: 620px;"  src=@/assets/user.png></v-img>
     </v-card>
     <v-card
       max-width="450"
@@ -79,5 +79,8 @@ width: 100%;
 <style>
 .slick-list{
     height: 110%;
+}
+.slick-slide.slick {
+  width: 10;
 }
 </style>

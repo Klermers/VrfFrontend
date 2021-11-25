@@ -81,35 +81,52 @@
           ></v-divider>
   
           <v-list-item
+          color="#05020D"
             v-else
             :key="item.title"
           >
             <v-list-item-avatar
               tile
+              width="30%"
               size ="120"
                                 >
-              <v-img :src="item.avatar"></v-img>
+              <v-img src='@/assets/user.png'></v-img>
             </v-list-item-avatar>
   
             <v-list-item-content>
               <v-list-item-title v-html="item.title"></v-list-item-title>
-              <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
+              <v-list-item-subtitle v-html="item.discription"></v-list-item-subtitle>
             </v-list-item-content>
                         <v-list-item-content>
-              <v-list-item-title v-html="item.title"></v-list-item-title>
-              <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
+              <v-list-item-title v-html="item.world"></v-list-item-title>
+              <v-list-item-title v-html="item.categorie"></v-list-item-title>
             </v-list-item-content>
-                        <v-list-item-content>
-              <v-list-item-title v-html="item.title"></v-list-item-title>
-              <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
-            </v-list-item-content>
-                        <v-list-item-content>
-              <v-list-item-title v-html="item.title"></v-list-item-title>
-              <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
-            </v-list-item-content>
-                        <v-list-item-content>
-              <v-list-item-title v-html="item.title"></v-list-item-title>
-              <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
+              <v-list-item-content>
+              <v-row
+              align="center"
+              >
+              <v-col
+                cols="3"
+                sm="6"
+                >
+                </v-col>
+                <v-col
+                cols="3"
+                sm="3"
+                >
+                <v-list-item-title v-html="item.displayname"></v-list-item-title>
+                </v-col>
+                <v-col
+                cols="3"
+                sm="2"
+                >
+                <v-list-item-avatar
+                size ="60"
+                                >
+              <v-img src='@/assets/user.png'></v-img>
+            </v-list-item-avatar>
+                </v-col>
+              </v-row>
             </v-list-item-content>
             
           </v-list-item>
@@ -156,26 +173,44 @@ export default {
       itemsPerPage: 18,
       sortBy: 'name',
       keys: [
-        'Name',
-        'Calories',
-        'Fat',
-        'Carbs',
-        'Protein',
-        'Sodium',
-        'Calcium',
-        'Iron',
+        'Img',
+        'Title',
+        'Description',
+        'World',
+        'Categorie',
+        'Displayname',
+        'Imguser',
       ],
       events: [
+   
         {
-          name: '@/assets/user.png',
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          sodium: 87,
-          calcium: '14%',
-          iron: '1%',
+          img:'@/assets/user.png',
+          title: "Drinking night",
+          discription: "welcome to drinking night we are having a party",
+          world: "Drinking night",
+          categorie: "Entertainment",
+          displayname: "Klerm",
+          imguser: '@/assets/user.png',
         },
+                {
+          img: '@/assets/user.png',
+          title: "Drinking night",
+          discription: "welcome to drinking night we are having a party",
+          world: "Drinking night",
+          categorie: "Entertainment",
+          displayname: "Klerm",
+          imguser: '@/assets/user.png',
+        },
+                {
+          img: '@/assets/user.png',
+          title: "Drinking night",
+          discription: "welcome to drinking night we are having a party",
+          world: "Drinking night",
+          categorie: "Entertainment",
+          displayname: "Klerm",
+          imguser: '@/assets/user.png',
+        },
+
       ],
       worlds:[
         {
@@ -252,4 +287,17 @@ export default {
 .container{
   padding-right: 13%;
 }
+</style>
+
+<style >
+.theme--light.v-list{
+  background: #05020D;
+}
+.v-list-item__title{
+  color:#FCFCFC;
+}
+.theme--light.v-list-item:not(.v-list-item--disabled) .v-list-item__subtitle, .theme--light.v-list-item:not(.v-list-item--disabled) .v-list-item__action-text{
+  color:#FCFCFC;
+}
+
 </style>
