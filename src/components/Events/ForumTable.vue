@@ -9,7 +9,10 @@
         :sort-desc="sortDesc"
         hide-default-footer
       >
-        <template v-slot:header>
+<v-card
+      max-width="100%"
+      class="mx-auto"
+    >
           <v-toolbar
             dark
             color="#05020D"
@@ -63,60 +66,57 @@
               <v-spacer></v-spacer>
             </template>
           </v-toolbar>
-        </template>
   
-        <template v-slot:default="props">
-          <v-row>
-            <v-col
-              v-for="item in props.items"
-              :key="item.name"
-            >
-              <v-card color="#04020C">
-                <v-list dense>
-                  <v-list-item
-                    v-for="(key, index) in filteredKeys"
-                    :key="index"
-                  >
-                    <v-list-item-content :class="{ 'blue--text': sortBy === key }">
-                      {{ key }}:
-                    </v-list-item-content>
-                    <v-list-item-content
-                      class="align-end"
-                      :class="{ 'blue--text': sortBy === key }"
-                    >
-                      {{ item[key.toLowerCase()] }}
-                    </v-list-item-content>
-                                        <v-list-item-content
-                      class="align-end"
-                      :class="{ 'blue--text': sortBy === key }"
-                    >
-                      {{ item[key.toLowerCase()] }}
-                    </v-list-item-content>
-                                        <v-list-item-content
-                      class="align-end"
-                      :class="{ 'blue--text': sortBy === key }"
-                    >
-                      {{ item[key.toLowerCase()] }}
-                    </v-list-item-content>
-                                        <v-list-item-content
-                      class="align-end"
-                      :class="{ 'blue--text': sortBy === key }"
-                    >
-                      {{ item[key.toLowerCase()] }}
-                    </v-list-item-content>
-                                        <v-list-item-content
-                      class="align-end"
-                      :class="{ 'blue--text': sortBy === key }"
-                    >
-                      {{ item[key.toLowerCase()] }}
-                    </v-list-item-content>
-                    
-                  </v-list-item>
-                </v-list>
-              </v-card>
-            </v-col>
-          </v-row>
+      <v-list three-line>
+        <template v-for="(item, index) in items">
+          <v-subheader
+            v-if="item.header"
+            :key="item.header"
+            v-text="item.header"
+          ></v-subheader>
+  
+          <v-divider
+            v-else-if="item.divider"
+            :key="index"
+            :inset="item.inset"
+          ></v-divider>
+  
+          <v-list-item
+            v-else
+            :key="item.title"
+          >
+            <v-list-item-avatar
+              tile
+              size ="120"
+                                >
+              <v-img :src="item.avatar"></v-img>
+            </v-list-item-avatar>
+  
+            <v-list-item-content>
+              <v-list-item-title v-html="item.title"></v-list-item-title>
+              <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
+            </v-list-item-content>
+                        <v-list-item-content>
+              <v-list-item-title v-html="item.title"></v-list-item-title>
+              <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
+            </v-list-item-content>
+                        <v-list-item-content>
+              <v-list-item-title v-html="item.title"></v-list-item-title>
+              <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
+            </v-list-item-content>
+                        <v-list-item-content>
+              <v-list-item-title v-html="item.title"></v-list-item-title>
+              <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
+            </v-list-item-content>
+                        <v-list-item-content>
+              <v-list-item-title v-html="item.title"></v-list-item-title>
+              <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
+            </v-list-item-content>
+            
+          </v-list-item>
         </template>
+      </v-list>
+    </v-card>
   
         <template v-slot:footer>
           <v-row
