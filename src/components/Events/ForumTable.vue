@@ -1,7 +1,7 @@
 <template>
 <v-container class="container">
 <v-data-iterator
-        :items="items"
+        :items="events"
         :items-per-page.sync="itemsPerPage"
         :page.sync="page"
         :search="search"
@@ -9,7 +9,10 @@
         :sort-desc="sortDesc"
         hide-default-footer
       >
-        <template v-slot:header>
+<v-card
+      max-width="100%"
+      class="mx-auto"
+    >
           <v-toolbar
             dark
             color="#05020D"
@@ -21,7 +24,8 @@
                 flat
                 solo-inverted
                 hide-details
-                :items="keys"
+                :items="worlds"
+                item-text="world"
                 label="World"
               ></v-select>
               <v-spacer></v-spacer>
@@ -30,7 +34,8 @@
                 flat
                 solo-inverted
                 hide-details
-                :items="keys"
+                :items="categories"
+                item-text="categorie"
                 label="Category"
               ></v-select>
               <v-spacer></v-spacer>
@@ -39,7 +44,6 @@
                 flat
                 solo-inverted
                 hide-details
-                :items="keys"
                 label="Date Event"
               ></v-select>
               <v-spacer></v-spacer>
@@ -48,7 +52,6 @@
                 flat
                 solo-inverted
                 hide-details
-                :items="keys"
                 label="Created"
               ></v-select>
               <v-spacer></v-spacer>
@@ -57,66 +60,79 @@
                 flat
                 solo-inverted
                 hide-details
-                :items="keys"
                 label="Views"
               ></v-select>
               <v-spacer></v-spacer>
             </template>
           </v-toolbar>
-        </template>
   
-        <template v-slot:default="props">
-          <v-row>
-            <v-col
-              v-for="item in props.items"
-              :key="item.name"
-            >
-              <v-card color="#04020C">
-                <v-list dense>
-                  <v-list-item
-                    v-for="(key, index) in filteredKeys"
-                    :key="index"
-                  >
-                    <v-list-item-content :class="{ 'blue--text': sortBy === key }">
-                      {{ key }}:
-                    </v-list-item-content>
-                    <v-list-item-content
-                      class="align-end"
-                      :class="{ 'blue--text': sortBy === key }"
-                    >
-                      {{ item[key.toLowerCase()] }}
-                    </v-list-item-content>
-                                        <v-list-item-content
-                      class="align-end"
-                      :class="{ 'blue--text': sortBy === key }"
-                    >
-                      {{ item[key.toLowerCase()] }}
-                    </v-list-item-content>
-                                        <v-list-item-content
-                      class="align-end"
-                      :class="{ 'blue--text': sortBy === key }"
-                    >
-                      {{ item[key.toLowerCase()] }}
-                    </v-list-item-content>
-                                        <v-list-item-content
-                      class="align-end"
-                      :class="{ 'blue--text': sortBy === key }"
-                    >
-                      {{ item[key.toLowerCase()] }}
-                    </v-list-item-content>
-                                        <v-list-item-content
-                      class="align-end"
-                      :class="{ 'blue--text': sortBy === key }"
-                    >
-                      {{ item[key.toLowerCase()] }}
-                    </v-list-item-content>
-                    
-                  </v-list-item>
-                </v-list>
-              </v-card>
-            </v-col>
-          </v-row>
+      <v-list three-line>
+        <template v-for="(item, index) in events">
+          <v-subheader
+            v-if="item.header"
+            :key="item.header"
+            v-text="item.header"
+          ></v-subheader>
+  
+          <v-divider
+            v-else-if="item.divider"
+            :key="index"
+            :inset="item.inset"
+          ></v-divider>
+  
+          <v-list-item
+          color="#05020D"
+            v-else
+            :key="item.title"
+          >
+            <v-list-item-avatar
+              tile
+              width="30%"
+              size ="120"
+                                >
+              <v-img src='@/assets/user.png'></v-img>
+            </v-list-item-avatar>
+  
+            <v-list-item-content>
+              <v-list-item-title v-html="item.title"></v-list-item-title>
+              <v-list-item-subtitle v-html="item.discription"></v-list-item-subtitle>
+            </v-list-item-content>
+                        <v-list-item-content>
+              <v-list-item-title v-html="item.world"></v-list-item-title>
+              <v-list-item-title v-html="item.categorie"></v-list-item-title>
+            </v-list-item-content>
+              <v-list-item-content>
+              <v-row
+              align="center"
+              >
+              <v-col
+                cols="3"
+                sm="6"
+                >
+                </v-col>
+                <v-col
+                cols="3"
+                sm="3"
+                >
+                <v-list-item-title v-html="item.displayname"></v-list-item-title>
+                </v-col>
+                <v-col
+                cols="3"
+                sm="2"
+                >
+                <v-list-item-avatar
+                size ="60"
+                                >
+              <v-img src='@/assets/user.png'></v-img>
+            </v-list-item-avatar>
+                </v-col>
+              </v-row>
+            </v-list-item-content>
+            
+          </v-list-item>
         </template>
+      </v-list>
+    </v-card>
   
         <template v-slot:footer>
           <v-row
@@ -157,32 +173,97 @@ export default {
       itemsPerPage: 18,
       sortBy: 'name',
       keys: [
-        'Name',
-        'Calories',
-        'Fat',
-        'Carbs',
-        'Protein',
-        'Sodium',
-        'Calcium',
-        'Iron',
+        'Img',
+        'Title',
+        'Description',
+        'World',
+        'Categorie',
+        'Displayname',
+        'Imguser',
       ],
-      items: [
+      events: [
+   
         {
-          name: '@/assets/user.png',
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          sodium: 87,
-          calcium: '14%',
-          iron: '1%',
+          img:'@/assets/user.png',
+          title: "Drinking night",
+          discription: "welcome to drinking night we are having a party",
+          world: "Drinking night",
+          categorie: "Entertainment",
+          displayname: "Klerm",
+          imguser: '@/assets/user.png',
+        },
+                {
+          img: '@/assets/user.png',
+          title: "Drinking night",
+          discription: "welcome to drinking night we are having a party",
+          world: "Drinking night",
+          categorie: "Entertainment",
+          displayname: "Klerm",
+          imguser: '@/assets/user.png',
+        },
+                {
+          img: '@/assets/user.png',
+          title: "Drinking night",
+          discription: "welcome to drinking night we are having a party",
+          world: "Drinking night",
+          categorie: "Entertainment",
+          displayname: "Klerm",
+          imguser: '@/assets/user.png',
+        },
+
+      ],
+      worlds:[
+        {
+          id:1,
+          world:"Drinking Night"
+        },
+                {
+          id:2,
+          world:"Black Cat"
+        },
+                {
+          id:3,
+          world:"Midnight Rooftop"
+        },
+                {
+          id:4,
+          world:"Murder 4"
+        },
+                {
+          id:5,
+          world:"Golf us"
         },
       ],
+        categories:[
+        {
+          id:1,
+          categorie:"Sport"
+        },
+                {
+          id:2,
+          categorie:"Entertianment"
+        },
+                {
+          id:3,
+          categorie:"Games"
+        },
+                {
+          id:4,
+          categorie:"Movies"
+        },
+                {
+          id:5,
+          categorie:"Relaxment"
+        },
+      ],
+      worldnames:[
+
+      ]
     }
   },
   computed: {
     numberOfPages () {
-      return Math.ceil(this.items.length / this.itemsPerPage)
+      return Math.ceil(this.events.length / this.itemsPerPage)
     },
     filteredKeys () {
       return this.keys.filter(key => key !== 'Name')
@@ -206,4 +287,17 @@ export default {
 .container{
   padding-right: 13%;
 }
+</style>
+
+<style >
+.theme--light.v-list{
+  background: #05020D;
+}
+.v-list-item__title{
+  color:#FCFCFC;
+}
+.theme--light.v-list-item:not(.v-list-item--disabled) .v-list-item__subtitle, .theme--light.v-list-item:not(.v-list-item--disabled) .v-list-item__action-text{
+  color:#FCFCFC;
+}
+
 </style>

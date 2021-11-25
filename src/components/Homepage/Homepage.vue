@@ -35,11 +35,11 @@ export default {
 <style scoped>
 .main{
   padding-right: 15%;
-  padding-left: 20%;
+  padding-left: 15%;
 }
 
 .main2{
-  margin-top: 5%;
+  margin-top: 10%;
   padding-right: 5%;
   padding-left: 5%;
 }
