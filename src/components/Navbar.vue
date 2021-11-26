@@ -1,13 +1,17 @@
 <template>
 <div>
     <v-toolbar color="#241743" dense dark>
+      <router-link style="color: #FCFCFC" to="/">
       <v-toolbar-title>VRF</v-toolbar-title>
+      </router-link>
+      <router-link style="color: #FCFCFC" to="/events">
       <v-btn
         depressed
         color="#241743"
       >
         Event
       </v-btn>
+      </router-link>
 
       <v-spacer></v-spacer>
 

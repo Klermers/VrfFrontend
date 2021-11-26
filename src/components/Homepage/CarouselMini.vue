@@ -1,29 +1,46 @@
 <template>
-<VueSlickCarousel v-bind="settings" class="carousel">
+<VueSlickCarousel  v-bind="settings" class="carousel">
+    
+    <router-link to="/event">
     <v-card
       max-width="450"
       max-height="200"
     >
-        <v-img  src=@/assets/user.png></v-img>
+        <v-img  src=@/assets/six.png></v-img>
     </v-card>
+    </router-link>
+    <router-link to="/event">
     <v-card
       max-width="450"
       max-height="200"
     >
 <v-img style="outline: none;width: 620px;"  src=@/assets/user.png></v-img>
     </v-card>
+    </router-link>
+    <router-link to="/event">
     <v-card
       max-width="450"
       max-height="200"
     >
-        <v-img  src=@/assets/user.png></v-img>
+        <v-img  src=@/assets/seven.png></v-img>
     </v-card>
+    </router-link>
+    <router-link to="/event">
     <v-card
       max-width="450"
       max-height="200"
     >
-        <v-img  src=@/assets/user.png></v-img>
+        <v-img  src=@/assets/eight.png></v-img>
     </v-card>
+    </router-link>
+    <router-link to="/event">
+        <v-card
+      max-width="450"
+      max-height="200"
+    >
+        <v-img  src=@/assets/nine.png></v-img>
+    </v-card>
+    </router-link>
 </VueSlickCarousel>
 </template>
 

@@ -67,7 +67,8 @@
           </v-toolbar>
   
       <v-list three-line>
-        <template v-for="(item, index) in events">
+        <div v-for="item in events" :key="item.message">
+          <router-link to="/event">
           <v-subheader
             v-if="item.header"
             :key="item.header"
@@ -79,10 +80,8 @@
             :key="index"
             :inset="item.inset"
           ></v-divider>
-  
           <v-list-item
           color="#05020D"
-            v-else
             :key="item.title"
           >
             <v-list-item-avatar
@@ -130,7 +129,8 @@
             </v-list-item-content>
             
           </v-list-item>
-        </template>
+        </router-link>
+        </div>
       </v-list>
     </v-card>
   
