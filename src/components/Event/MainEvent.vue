@@ -89,25 +89,22 @@
               cols="12"
               sm="12"
               >
-              <strong  class="mx-auto my-12"  >World:</strong>
-              <v-spacer></v-spacer>
-              <strong>Drinking night</strong>
+              <strong  class="my-1 d-flex justify-center"  >World:</strong>
+              <strong class="my-0 d-flex justify-center" >Drinking night</strong>
               </v-col>
               <v-col
               cols="12"
               sm="12"
               >
-              <strong  >Date:</strong>
-              <v-spacer></v-spacer>
-              <strong>20-04-2022</strong>
+              <strong class="my-1 d-flex justify-center"   >Date Of Event:</strong>
+              <strong class="my-1 d-flex justify-center" >20-04-2022</strong>
               </v-col>
                             <v-col
               cols="12"
               sm="12"
               >
-              <strong  >Participants:</strong>
-              <v-spacer></v-spacer>
-              <strong>10/50</strong>
+              <strong class="my-1 d-flex justify-center"  >Participants:</strong>
+              <strong class="my-1 d-flex justify-center" >10/50</strong>
               </v-col>
             </row>
             </v-card>

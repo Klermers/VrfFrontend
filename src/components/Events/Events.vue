@@ -32,14 +32,12 @@
       sm="1"
     
     >
-    <router-link to="/createevent">
-    <v-btn
+    <v-btn @click="$router.push('/createevent')"
      depressed
      color="#FF4E9F"
       >
       Create event
     </v-btn>
-    </router-link>
     </v-col>
   </v-row>
 <forum-table/>

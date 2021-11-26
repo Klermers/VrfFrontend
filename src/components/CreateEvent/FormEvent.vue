@@ -107,13 +107,13 @@
           cols="12"
           md="12"
         >
-        <v-btn
+        <v-btn @click="$router.push('/events')"
          depressed
          color="#FF4E9F"
         >
           Cancel
         </v-btn>
-        <v-btn
+        <v-btn @click="$router.push('/event')"
          depressed
          color="#FF4E9F"
         >
