@@ -60,7 +60,7 @@ export default {
     name: 'CarouselMini',
     data(){
       return {
-                events: [
+        events: [
    
         {
           img:image,
