@@ -12,6 +12,7 @@
           v-slot="{ active, toggle }"
         >
         <v-hover v-slot="{ hover }">
+          <router-link to="/event">
           <v-card
             :color="active ? undefined : 'grey lighten-1'"
             class="ma-4"
@@ -45,6 +46,7 @@
               </v-expand-transition>
               </v-img>
           </v-card>
+          </router-link>
           </v-hover>
         </v-slide-item>
       </v-slide-group>
