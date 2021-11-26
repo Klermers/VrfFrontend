@@ -1,3 +1,4 @@
+<script src="http://localhost:8098"></script>
 <template>
   <v-app id='app' style="background: #140D2F;">
     <nav-bar></nav-bar>

@@ -1,5 +1,6 @@
 <template>
 <VueSlickCarousel class="carousel3" v-bind="settings">
+<router-link to="/event">
  <v-card
       class="event mx-auto"
       max-width="1600"
@@ -22,6 +23,7 @@
         </v-list-item-content>      
       </v-list-item>
     </v-card>
+  </router-link>
  <v-card
       class="event mx-auto"
       max-width="1600"
