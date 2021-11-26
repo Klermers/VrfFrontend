@@ -31,6 +31,10 @@ v-model="model"
 
 <script>
 import image from "../../assets/user.jpg"
+import image2 from "../../assets/nine.jpg"
+import image3 from "../../assets/eight.jpg"
+import image4 from "../../assets/vijf.jpg"
+import image5 from "../../assets/seven.jpg"
 export default {
     name: 'CarouselMain',
     data(){
@@ -47,17 +51,35 @@ export default {
           imguser: '@/assets/user.png',
         },
                 {
-          img: '@/assets/user.png',
-          title: "Drinking night",
+          img: image2,
+          title: "Party Festivval ",
           discription: "If you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinking",
           world: "Drinking night",
           categorie: "Entertainment",
           displayname: "Klerm",
           imguser: '@/assets/user.png',
         },
-                {
-          img: '@/assets/user.png',
-          title: "Drinking night",
+        {
+          img: image3,
+          title: "Camping in the woods",
+          discription: "If you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinking",
+          world: "Drinking night",
+          categorie: "Entertainment",
+          displayname: "Klerm",
+          imguser: '@/assets/user.png',
+        },
+        {
+          img: image4,
+          title: "Horror Mansion Escape",
+          discription: "If you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinking",
+          world: "Drinking night",
+          categorie: "Entertainment",
+          displayname: "Klerm",
+          imguser: '@/assets/user.png',
+        },
+        {
+          img: image5,
+          title: "Drwaing Contest",
           discription: "If you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinking",
           world: "Drinking night",
           categorie: "Entertainment",
