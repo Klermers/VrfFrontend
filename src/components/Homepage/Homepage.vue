@@ -40,7 +40,7 @@ export default {
 }
 
 .main2{
-  margin-top: 5%;
+  margin-top: 1%;
   padding-right: 5%;
   padding-left: 5%;
 }

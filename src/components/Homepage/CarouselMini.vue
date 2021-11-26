@@ -1,65 +1,114 @@
 <template>
-<VueSlickCarousel  v-bind="settings" class="carousel">
-    
-    <router-link to="/event">
-    <v-card
-      max-width="450"
-      max-height="200"
-    >
-        <v-img  src=@/assets/six.png></v-img>
-    </v-card>
-    </router-link>
-    <router-link to="/event">
-    <v-card
-      max-width="450"
-      max-height="200"
-    >
-<v-img style="outline: none;width: 620px;"  src=@/assets/user.png></v-img>
-    </v-card>
-    </router-link>
-    <router-link to="/event">
-    <v-card
-      max-width="450"
-      max-height="200"
-    >
-        <v-img  src=@/assets/seven.png></v-img>
-    </v-card>
-    </router-link>
-    <router-link to="/event">
-    <v-card
-      max-width="450"
-      max-height="200"
-    >
-        <v-img  src=@/assets/eight.png></v-img>
-    </v-card>
-    </router-link>
-    <router-link to="/event">
-        <v-card
-      max-width="450"
-      max-height="200"
-    >
-        <v-img  src=@/assets/nine.png></v-img>
-    </v-card>
-    </router-link>
-</VueSlickCarousel>
+<v-slide-group
+        v-model="model"
+        class="pa-4"
+        active-class="success"
+        show-arrows
+      >
+      
+        <v-slide-item
+          v-for="event in events"
+          :key="event.title"
+          v-slot="{ active, toggle }"
+        >
+        <v-hover v-slot="{ hover }">
+          <v-card
+            :color="active ? undefined : 'grey lighten-1'"
+            class="ma-4"
+            height="360"
+            width="400"
+            @click="toggle"
+          >
+          <v-img height="100%"  :src="event.img">
+              <v-expand-transition>
+                <div
+                v-if="hover"
+                class=" d-flex transition-fast-in-fast-out black darken-2 v-card--reveal white--text"
+                style="height: 100%;"
+              >
+              <v-row>
+                <v-col
+                class="d-flex justify-center"
+                cols="12"
+                sm="12"
+                >
+                <h1 class="align-self-start"  v-html="event.title"> </h1>
+                </v-col>
+                <v-col
+                cols="12"
+                sm="12"
+                >
+                <h5 class="align-self-start"  v-html="event.discription"> </h5>
+                </v-col>
+              </v-row>
+              </div>
+              </v-expand-transition>
+              </v-img>
+          </v-card>
+          </v-hover>
+        </v-slide-item>
+      </v-slide-group>
 </template>
 
 <script>
-  import VueSlickCarousel from 'vue-slick-carousel'
-  import 'vue-slick-carousel/dist/vue-slick-carousel.css'
-  // optional style for arrows & dots
-  import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+import image from "../../assets/user.jpg"
+import image2 from "../../assets/nine.jpg"
+import image3 from "../../assets/eight.jpg"
+import image4 from "../../assets/vijf.jpg"
+import image5 from "../../assets/seven.jpg"
 export default {
     name: 'CarouselMini',
-    components: { VueSlickCarousel },
     data(){
       return {
-        settings: {
-          arrows: true,
-          dots: false,
-            infinite: false,
-            slidesToShow: 3,
+                events: [
+   
+        {
+          img:image,
+          title: "Drinking night",
+          discription: "If you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinking",
+          world: "Drinking night",
+          categorie: "Entertainment",
+          displayname: "Klerm",
+          imguser: '@/assets/user.png',
         },
+                {
+          img: image2,
+          title: "Party Festivval ",
+          discription: "If you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinking",
+          world: "Drinking night",
+          categorie: "Entertainment",
+          displayname: "Klerm",
+          imguser: '@/assets/user.png',
+        },
+        {
+          img: image3,
+          title: "Camping in the woods",
+          discription: "If you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinking",
+          world: "Drinking night",
+          categorie: "Entertainment",
+          displayname: "Klerm",
+          imguser: '@/assets/user.png',
+        },
+        {
+          img: image4,
+          title: "Horror Mansion Escape",
+          discription: "If you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinking",
+          world: "Drinking night",
+          categorie: "Entertainment",
+          displayname: "Klerm",
+          imguser: '@/assets/user.png',
+        },
+        {
+          img: image5,
+          title: "Drawing Contest",
+          discription: "If you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinking",
+          world: "Drinking night",
+          categorie: "Entertainment",
+          displayname: "Klerm",
+          imguser: '@/assets/user.png',
+        },
+
+      ],
       }
     }
 };
