@@ -40,7 +40,7 @@
         size="36"
     >
         <img
-          src="@/assets/user.png"
+          src="https://res.cloudinary.com/dmyhwecgp/image/upload/v1638845753/Vrf/user-icon-human-person-sign-vector-10206693_kjwqt8.png"
         >
     </v-avatar>
     </v-toolbar>

@@ -24,7 +24,7 @@
                 flat
                 solo-inverted
                 hide-details
-                :items="worlds"
+                :items="getterworlds"
                 item-text="world"
                 label="World"
               ></v-select>
@@ -34,7 +34,7 @@
                 flat
                 solo-inverted
                 hide-details
-                :items="categories"
+                :items="gettercategories"
                 item-text="categorie"
                 label="Category"
               ></v-select>
@@ -187,7 +187,6 @@ export default {
         'Imguser',
       ],
       events: [
-   
         {
           img:image,
           title: "Drinking night",
@@ -291,6 +290,16 @@ export default {
     filteredKeys () {
       return this.keys.filter(key => key !== 'Name')
     },
+    getterworlds() {
+      return this.$store.getters.allworlds
+    },
+    gettercategories(){
+      return this.$store.getters.allcategories
+    }
+  },
+  mounted() {
+    this.$store.dispatch("GetWorlds");
+    this.$store.dispatch("GetCategories");
   },
   methods: {
     nextPage () {

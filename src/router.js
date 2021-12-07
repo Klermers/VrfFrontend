@@ -4,6 +4,7 @@ import Homepage from './components/Homepage/Homepage'
 import Event from './components/Event/Event'
 import Events from './components/Events/Events'
 import CreateEvent from './components/CreateEvent/CreateEvent'
+import LoginPage from './components/Login/LoginPage'
 
 Vue.use(Router)
 
@@ -29,7 +30,12 @@ const router = new Router({
             path: '/createevent/',
             name: 'createevent',
             component: CreateEvent
-        }
+        },
+        {
+            path: '/loginpage/',
+            name: 'loginpage',
+            component: LoginPage
+        },
     ]
 })
 
