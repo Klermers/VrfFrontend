@@ -8,7 +8,7 @@ const API_URL = 'http://localhost:1212/';
 
 const state = {
     token:"",
-    events: [],
+    events:[],
     event:{},
     user:{},
     categories:[],
@@ -17,12 +17,13 @@ const state = {
 
 const actions = {
     Login ({commit}, user) {
-        axios.get(API_URL + 'user/login',{
+        axios.post('http://localhost:1212/user/login',{
             "username": user.username,
             "password": user.password
         })
         .then(response => {
             commit('SET_TOKEN',response.data)
+            console.log(state.token)
         })
         .catch(error => {
             console.error(error);
@@ -31,20 +32,22 @@ const actions = {
     GetUser({commit}){
         axios.get(API_URL+ 'user/getuser',{
             headers: {
-                'Authorization': 'bearer '+state.token
+                'Authorization':state.token
             }
         })
         .then(response => {
             commit('SET_USER',response.data)
+            console.log(state.user)
         })
         .catch(error => {
             console.error(error);
         })
     },
     GetEvents({commit}){
-        axios.get(API_URL+ 'event/getevents')
+          axios.get(API_URL+ 'event/getevents')
         .then(response =>{
             commit('SET_EVENTS', response.data)
+            console.log(response.data)
         })
         .catch(error => {
             console.error(error);

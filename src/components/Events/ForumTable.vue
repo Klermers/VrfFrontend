@@ -1,7 +1,7 @@
 <template>
 <v-container class="container">
 <v-data-iterator
-        :items="events"
+        :items="getterevents"
         :items-per-page.sync="itemsPerPage"
         :page.sync="page"
         :search="search"
@@ -67,7 +67,7 @@
           </v-toolbar>
   
       <v-list three-line>
-        <div v-for="item in events" :key="item.message">
+        <div v-for="item in getterevents" :key="item.titel">
           <router-link to="/event">
           <v-subheader
             v-if="item.header"
@@ -89,16 +89,16 @@
               width="30%"
               size ="120"
                                 >
-              <v-img :src="item.img"></v-img>
+              <v-img :src="item.images.image"></v-img>
             </v-list-item-avatar>
   
             <v-list-item-content class="align-self-start">
-              <v-list-item-title v-html="item.title"></v-list-item-title>
-              <v-list-item-subtitle v-html="item.discription"></v-list-item-subtitle>
+              <v-list-item-title v-html="item.titel"></v-list-item-title>
+              <v-list-item-subtitle v-html="item.description"></v-list-item-subtitle>
             </v-list-item-content>
               <v-list-item-content class="align-self-start">
-              <v-list-item-title v-html="item.world"></v-list-item-title>
-              <v-list-item-title v-html="item.categorie"></v-list-item-title>
+              <v-list-item-title v-html="item.worlds.world"></v-list-item-title>
+              <v-list-item-title v-html="item.categories.categorie"></v-list-item-title>
             </v-list-item-content>
               <v-list-item-content>
               <v-row
@@ -113,7 +113,7 @@
                 cols="3"
                 sm="3"
                 >
-                <v-list-item-title class="align-self-start" v-html="item.displayname"></v-list-item-title>
+                <v-list-item-title class="align-self-start" v-html="item.users.displayname"></v-list-item-title>
                 </v-col>
                 <v-col
                 cols="3"
@@ -122,7 +122,7 @@
                 <v-list-item-avatar
                 size ="60"
                                 >
-              <v-img :src="item.imguser"></v-img>
+              <v-img :src="item.users.image.image"></v-img>
             </v-list-item-avatar>
                 </v-col>
               </v-row>
@@ -150,7 +150,7 @@
             </span>
             <v-pagination
               v-model="page"
-              :length="15"
+              :length="5"
               :total-visible="5"
               color= "#05020D"
             ></v-pagination>
@@ -161,22 +161,16 @@
 </template>
 
 <script>
-import image from "../../assets/user.jpg"
-import image2 from "../../assets/nine.jpg"
-import image3 from "../../assets/eight.jpg"
-import image4 from "../../assets/vijf.jpg"
-import image5 from "../../assets/seven.jpg"
 export default {
   name: 'Forumtable',
   data () {
     return {
-      itemsPerPageArray: [4, 8, 12],
       search: '',
       filter: {},
       sortDesc: false,
       page: 1,
-      itemsPerPage: 18,
-      sortBy: 'name',
+      itemsPerPage: 5,
+      sortBy: 'title',
       keys: [
         'Img',
         'Title',
@@ -186,120 +180,30 @@ export default {
         'Displayname',
         'Imguser',
       ],
-      events: [
-        {
-          img:image,
-          title: "Drinking night",
-          discription: "If you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinking",
-          world: "World: Drinking night",
-          categorie: "Categorie: Entertainment",
-          displayname: "Klerm",
-          imguser: image
-        },
-                {
-          img: image2,
-          title: "Party Festivval ",
-          discription: "If you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinking",
-          world: "World: Drinking night",
-          categorie: "Categorie: Entertainment",
-          displayname: "Klerm",
-          imguser: image
-        },
-        {
-          img: image3,
-          title: "Camping in the woods",
-          discription: "If you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinking",
-          world: "World: Drinking night",
-          categorie: "Categorie: Entertainment",
-          displayname: "Klerm",
-          imguser: image
-        },
-        {
-          img: image4,
-          title: "Horror Mansion Escape",
-          discription: "If you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinking",
-          world: "World: Drinking night",
-          categorie: "Categorie: Entertainment",
-          displayname: "Klerm",
-          imguser: image
-        },
-        {
-          img: image5,
-          title: "Drawing Contest",
-          discription: "If you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinkingIf you wanna party and you love some games and music.This is your place. We have a dj and a ton of group games for drinking",
-          world: "World: Drinking night",
-          categorie: "Categorie: Entertainment",
-          displayname: "Klerm",
-          imguser: image
-        },
-
-      ],
-      worlds:[
-        {
-          id:1,
-          world:"Drinking Night"
-        },
-                {
-          id:2,
-          world:"Black Cat"
-        },
-                {
-          id:3,
-          world:"Midnight Rooftop"
-        },
-                {
-          id:4,
-          world:"Murder 4"
-        },
-                {
-          id:5,
-          world:"Golf us"
-        },
-      ],
-        categories:[
-        {
-          id:1,
-          categorie:"Sport"
-        },
-                {
-          id:2,
-          categorie:"Entertianment"
-        },
-                {
-          id:3,
-          categorie:"Games"
-        },
-                {
-          id:4,
-          categorie:"Movies"
-        },
-                {
-          id:5,
-          categorie:"Relaxment"
-        },
-      ],
-      worldnames:[
-
-      ]
+      
     }
   },
   computed: {
     numberOfPages () {
-      return Math.ceil(this.events.length / this.itemsPerPage)
+      return Math.ceil(this.getterevents.length / this.itemsPerPage)
     },
     filteredKeys () {
-      return this.keys.filter(key => key !== 'Name')
+      return this.keys.filter(key => key !== 'titel')
     },
     getterworlds() {
       return this.$store.getters.allworlds
     },
     gettercategories(){
       return this.$store.getters.allcategories
+    },
+    getterevents(){
+      return this.$store.getters.allevents
     }
   },
   mounted() {
     this.$store.dispatch("GetWorlds");
     this.$store.dispatch("GetCategories");
+    this.$store.dispatch("GetEvents");
   },
   methods: {
     nextPage () {

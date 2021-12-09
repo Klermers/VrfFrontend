@@ -40,7 +40,7 @@
         size="36"
     >
         <img
-          src="https://res.cloudinary.com/dmyhwecgp/image/upload/v1638845753/Vrf/user-icon-human-person-sign-vector-10206693_kjwqt8.png"
+          :src="getImgUrl()"
         >
     </v-avatar>
     </v-toolbar>
@@ -49,7 +49,24 @@
 
 <script>
 export default {
-    name: 'NavBar'
+    name: 'NavBar',
+    computed: {
+    },
+    methods:{
+      getImgUrl(){
+        if(this.$store.getters.token){
+          console.log(this.$store.getters.user)
+          return this.$store.getters.user.image.image
+        }
+        else
+        {
+          return "https://res.cloudinary.com/dmyhwecgp/image/upload/v1638845753/Vrf/user-icon-human-person-sign-vector-10206693_kjwqt8.png"
+        }
+        
+      }
+    },
+  mounted(){
+  }
 };
 </script>
 
