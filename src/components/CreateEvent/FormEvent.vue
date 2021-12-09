@@ -1,5 +1,4 @@
-<template>
-    <v-form style="background: #0B061E;">
+<v-form style="background: #0B061E;">
       <v-container>
         <v-row>
           <v-col
@@ -10,6 +9,8 @@
               label="Title"
               single-line
               solo
+              type="text"
+              v-model = event.titel
             ></v-text-field>
           </v-col>
   
@@ -18,9 +19,12 @@
             sm="4"
           >
           <v-select
-            :items="items"
+            :items="getterworlds"
             label="World"
+            item-text="world"
+            item-value="id"
             solo
+            v-model = event.worlds.id
           ></v-select>
           </v-col>
   
@@ -29,9 +33,12 @@
             sm="3"
           >
           <v-select
-            :categories="categories"
+            :items="gettercategories"
             label="Categories"
+            item-text="categorie"
+            item-value="id"
             solo
+            v-model = event.categories.id
           ></v-select>
           </v-col>
   
@@ -84,6 +91,7 @@
             name="input-7-4"
             label="Description..."
             rows="8"
+            v-model = event.description
             row-height="40"
           ></v-textarea>
         </v-col>
@@ -97,7 +105,6 @@
             label="Select an image to upload"
              help="Select a png, jpg or gif to upload."
             validation="mime:image/jpeg,image/png,image/gif"
-            multiple= 5
             />
           </v-col>
         </v-row>
@@ -113,7 +120,7 @@
         >
           Cancel
         </v-btn>
-        <v-btn @click="$router.push('/event')"
+        <v-btn @click="Createvent()"
          depressed
          color="#FF4E9F"
         >
@@ -128,12 +135,48 @@
 <script>
 export default {
   name: 'FormEvent',
-  data: () => ({
-  items: ['Drinkig night', 'Murder 2', 'Black cat', 'Midhnight Rooftop'],
-  categories: ['Sports', 'Games', 'Animals', 'Books'],
-  date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-  }),
+  data(){
+    return{
+    event:{
+      titel:"",
+      date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+      description : "",
+      users:{
+        id: this.$store.getters.user.id
+      },
+      worlds: {
+        id: null
+      },
+      categories: {
+        id: null
+      },
+      images: {
+        image: "dsfdff"
+      }
+      
+    }
+  }
+  },
   menu2: false,
+  methods:{
+    Createvent()
+    {
+      console.log(this.event)
+      this.$store.dispatch('CreateEvent',this.event)
+    }
+  },
+  computed: {
+    getterworlds() {
+      return this.$store.getters.allworlds
+    },
+    gettercategories(){
+      return this.$store.getters.allcategories
+    },
+  },
+  mounted() {
+    this.$store.dispatch("GetWorlds");
+    this.$store.dispatch("GetCategories");
+  },
 };
 </script>
 
