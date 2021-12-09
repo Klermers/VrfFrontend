@@ -1,6 +1,7 @@
 <template>
 <v-container class='main'>>
-  <main-event/>
+  <main-event v-bind:id="this.$route.params.id">
+  </main-event>
 </v-container>
 </template>
 
@@ -9,6 +10,7 @@ import MainEvent from './MainEvent.vue';
 export default {
   components: { MainEvent },
   name: 'Event',
+  props:['id'],
 };
 </script>
 

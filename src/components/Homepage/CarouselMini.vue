@@ -12,7 +12,7 @@
           v-slot="{ active, toggle }"
         >
         <v-hover v-slot="{ hover }">
-          <router-link to="/event">
+          <router-link :to="{name: 'event', params: {id: event.id}}">
           <v-card
             :color="active ? undefined : 'grey lighten-1'"
             class="ma-4"

@@ -68,7 +68,7 @@
   
       <v-list three-line>
         <div v-for="item in getterevents" :key="item.titel">
-          <router-link to="/event">
+          <router-link :to="{name: 'event', params: {id: item.id}}">
           <v-subheader
             v-if="item.header"
             :key="item.header"

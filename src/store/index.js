@@ -53,10 +53,8 @@ const actions = {
             console.error(error);
         })
     },
-    GetEvent({commit}, id){
-        axios.get(API_URL+ 'event/getevent',{
-            "id": id
-        })
+    GetEvent({commit},id){
+        axios.get(API_URL+ 'event/getevent/' + id)
         .then(response => {
             commit('SET_EVENT',response.data)
         })

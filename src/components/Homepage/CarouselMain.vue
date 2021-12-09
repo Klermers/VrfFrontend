@@ -9,7 +9,7 @@ v-model="model"
         v-for="event in getterevents.slice(0, 4)"
         :key="event.title"
       >
-      <router-link to="/event">
+      <router-link :to="{name: 'event', params: {id: event.id}}">
         <v-card
           color="#04020C"
         >

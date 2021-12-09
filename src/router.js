@@ -22,9 +22,10 @@ const router = new Router({
             component: Events
         },
         {
-            path: '/event',
+            path: '/event/:id',
             name: 'event',
-            component: Event
+            component: Event,
+            props: true
         },
         {
             path: '/createevent/',
