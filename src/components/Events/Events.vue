@@ -33,6 +33,7 @@
     
     >
     <v-btn @click="$router.push('/createevent')"
+    v-if="isloggedin"
      depressed
      color="#FF4E9F"
       >
@@ -49,6 +50,9 @@ import ForumTable from './ForumTable.vue';
 export default {
   components: { ForumTable },
   name: 'Events',
+  computed:{
+    isloggedin(){return this.$store.getters.token}
+  }
 };
 </script>
 <style scoped>

@@ -11,18 +11,20 @@
                               name="login"
                               label="Login"
                               type="text"
+                              v-model="user.username"
                            ></v-text-field>
                            <v-text-field
                               id="password"
                               name="password"
                               label="Password"
                               type="password"
+                              v-model="user.password"
                            ></v-text-field>
                         </v-form>
                      </v-card-text>
                      <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn color="primary" to="/">Login</v-btn>
+                        <v-btn color="primary" @click="Login()">Login</v-btn>
                      </v-card-actions>
                   </v-card>
                </v-flex>
@@ -41,6 +43,10 @@ export default {
        }
    },
    methods: {
+       Login(){
+           this.$store.dispatch('Login',this.user)
+           this.$store.dispatch('GetUser')
+       }
    }
 };
 </script>

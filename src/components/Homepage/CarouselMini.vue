@@ -7,12 +7,12 @@
       >
       
         <v-slide-item
-          v-for="event in events"
+          v-for="event in getterevents"
           :key="event.title"
           v-slot="{ active, toggle }"
         >
         <v-hover v-slot="{ hover }">
-          <router-link to="/event">
+          <router-link :to="{name: 'event', params: {id: event.id}}">
           <v-card
             :color="active ? undefined : 'grey lighten-1'"
             class="ma-4"
@@ -20,7 +20,7 @@
             width="400"
             @click="toggle"
           >
-          <v-img height="100%"  :src="event.img">
+          <v-img height="100%"  :src="event.images.image">
               <v-expand-transition>
                 <div
                 v-if="hover"
@@ -33,13 +33,13 @@
                 cols="12"
                 sm="12"
                 >
-                <h1 class="align-self-start"  v-html="event.title"> </h1>
+                <h1 class="align-self-start"  v-html="event.titel"> </h1>
                 </v-col>
                 <v-col
                 cols="12"
                 sm="12"
                 >
-                <h5 class="align-self-start"  v-html="event.discription"> </h5>
+                <h5 class="align-self-start"  v-html="event.description"> </h5>
                 </v-col>
               </v-row>
               </div>
@@ -112,6 +112,14 @@ export default {
 
       ],
       }
+    },
+        computed: {
+      getterevents(){
+        return this.$store.getters.allevents
+      }
+    },
+    mounted(){
+      this.$store.dispatch("GetEvents");
     }
 };
 </script>

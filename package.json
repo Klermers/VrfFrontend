@@ -10,6 +10,7 @@
   "dependencies": {
     "@braid/vue-formulate": "^2.5.2",
     "axios": "^0.24.0",
+    "cloudinary-vue": "^1.2.3",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-advanced-chat": "^1.4.0",

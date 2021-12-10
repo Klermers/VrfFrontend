@@ -17,7 +17,7 @@
             size="60"
             >
             <img
-            src="@/assets/user.png"
+            :src="getterevent.users.image.image"
             >
             </v-avatar>
             </div>
@@ -27,7 +27,7 @@
               sm="12"
               class="col"
             >
-            <h4 align="center" style="color: #FCFCFC;" >Klerm</h4>
+            <h4 align="center" style="color: #FCFCFC;" >{{getterevent.users.displayname}}</h4>
             </v-col>
           </v-row>
           </v-container>
@@ -43,7 +43,7 @@
           class="justify-center"
           cols="12"
             sm="12">
-          <h1  style="color: #FCFCFC;">Drinking night party</h1>
+          <h1  style="color: #FCFCFC;">{{getterevent.titel}}</h1>
           <VueSlickCarousel>
              <v-card
             class="mx-auto"
@@ -51,7 +51,7 @@
             outlined
             >
             <v-responsive :aspect-ratio="50/9">
-            <v-img class="mx-auto" width="900px" src=@/assets/user.png></v-img>
+            <v-img class="mx-auto" width="900px" :src="getterevent.images.image"></v-img>
             </v-responsive>
             </v-card>
           </VueSlickCarousel>
@@ -65,7 +65,7 @@
             disabled 
             auto-grow
             name="input-7-4"
-            value="Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia dolor sit amet consectetur adipisci[ng] velit, sed quia non numquam [do] eius modi tempora inci[di]dunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum[d] exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? [D]Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur? [33] At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias excepturi sint, obcaecati cupiditate non provident, similique sunt in culpa, qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+            :value="getterevent.description"
             rows="8"
             row-height="40"
             style="background-color:#BFBFBF"
@@ -90,14 +90,14 @@
               sm="12"
               >
               <strong  class="my-1 d-flex justify-center"  >World:</strong>
-              <strong class="my-0 d-flex justify-center" >Drinking night</strong>
+              <strong class="my-0 d-flex justify-center" >{{getterevent.worlds.world}}</strong>
               </v-col>
               <v-col
               cols="12"
               sm="12"
               >
               <strong class="my-1 d-flex justify-center"   >Date Of Event:</strong>
-              <strong class="my-1 d-flex justify-center" >20-04-2022</strong>
+              <strong class="my-1 d-flex justify-center" >{{getterevent.date}}</strong>
               </v-col>
                             <v-col
               cols="12"
@@ -177,6 +177,7 @@
 export default {
   name: 'MainEvent',
   components: { VueSlickCarousel },
+    props:['id'],
     data(){
       return {
         settings: {
@@ -193,7 +194,17 @@ export default {
           slidesToShow: 3,
         }
       }
-    }
+    },
+  computed: {
+  getterevent(){
+    console.log()
+      return this.$store.getters.event
+  }
+  },
+  mounted(){
+      this.$store.dispatch("GetEvent",this.id);
+  }
+    
 };
 </script>
 <style scoped>
