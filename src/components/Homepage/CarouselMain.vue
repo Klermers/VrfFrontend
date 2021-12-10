@@ -21,8 +21,8 @@ v-model="model"
             ><v-img  :src="event.images.image"></v-img>
             </v-list-item-avatar>
             <v-list-item-content class="align-self-start">
-              <v-list-item-title class="title mb-1" v-html="event.titel"></v-list-item-title>
-              <h4 class="title3" v-html="event.description"></h4>
+              <v-list-item-title class="title mb-1" v-text="event.titel"></v-list-item-title>
+              <h4 class="title3" v-text="event.description"></h4>
             </v-list-item-content>      
           </v-list-item>
         </v-card>
