@@ -79,6 +79,29 @@ const actions = {
         .catch(error => {
             console.error(error);
         })
+    },
+    CreateEvent(event){
+        axios.post(API_URL+'event/createevent',{
+            "titel": event.titel,
+            description: "A event where people can get to know eachother",
+            users: {
+                id: 18
+            },
+            worlds: {
+                id: 5
+            },
+            categories: {
+                id: 2
+            },
+            images: {
+                image: "ImageEvent2"
+            }
+        },{
+            headers: {
+                'Authorization':state.token,
+            }
+        })
+        console.log(event.titel)
     }
 }
 

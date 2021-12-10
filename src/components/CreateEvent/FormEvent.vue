@@ -1,3 +1,4 @@
+<template>
 <v-form style="background: #0B061E;">
       <v-container>
         <v-row>
@@ -99,13 +100,11 @@
             cols="3"
             sm="5"
           >
-            <FormulateInput
-            type="image"
-            name="headshot"
-            label="Select an image to upload"
-             help="Select a png, jpg or gif to upload."
-            validation="mime:image/jpeg,image/png,image/gif"
-            />
+          <v-file-input
+            accept="image/*"
+            label="File input"
+            @change="GetImageurl"
+          ></v-file-input>
           </v-col>
         </v-row>
         <row>
@@ -133,13 +132,13 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: 'FormEvent',
   data(){
     return{
     event:{
       titel:"",
-      date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       description : "",
       users:{
         id: this.$store.getters.user.id
@@ -151,10 +150,10 @@ export default {
         id: null
       },
       images: {
-        image: "dsfdff"
+        image: ""
       }
       
-    }
+    },
   }
   },
   menu2: false,
@@ -162,8 +161,74 @@ export default {
     Createvent()
     {
       console.log(this.event)
-      this.$store.dispatch('CreateEvent',this.event)
-    }
+      axios.post('http://localhost:1212/event/createevent',{
+            "titel": this.event.titel,
+            description: this.event.description,
+            users: {
+                id: this.event.users.id
+            },
+            worlds: {
+                id: this.event.worlds.id
+            },
+            categories: {
+                id: this.event.categories.id
+            },
+            images: {
+                image: this.event.images.image
+            }
+        },{
+            headers: {
+                'Authorization':this.$store.getters.token,
+            }
+        })
+    },
+    GetImageurl(file){
+      this.uploadFileToCloudinary(file).then((fileresponse) =>
+          this.event.images.image = fileresponse.url
+      )
+      console.log(this.event.images)
+    },
+    uploadFileToCloudinary(file) {
+    return new Promise(function (resolve, reject) {
+        //Ideally these to lines would be in a .env file
+        const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dmyhwecgp/image/upload';
+        const CLOUDINARY_UPLOAD_PRESET = 'jr8tbimj';
+
+        let formData = new FormData();
+        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+        formData.append('folder', 'vrf');
+        formData.append('file', file);
+
+        let request = new XMLHttpRequest();
+        request.open('POST', CLOUDINARY_URL, true);
+        request.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+
+        request.onreadystatechange = () => {
+            // File uploaded successfully
+            if (request.readyState === 4 && request.status === 200) {
+                let response = JSON.parse(request.responseText);
+                console.log(response)
+                resolve(response);
+            }
+
+            // Not succesfull, let find our what happened
+            if (request.status !== 200) {
+                let response = JSON.parse(request.responseText);
+                let error = response.error.message;
+                alert('error, status code not 200 ' + error);
+                reject(error);
+            }
+
+        };
+
+        request.onerror = (err) => {
+            alert('error: ' + err);
+            reject(err);
+        };
+
+        request.send(formData);
+    });
+}
   },
   computed: {
     getterworlds() {
