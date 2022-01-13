@@ -12,7 +12,7 @@
   cols="12"
   sm="12"
   >
-    <h1 class="title">Populair events</h1>
+    <h1 class="title">New Events</h1>
    <CarouselMini/>
  </v-col>
 </v-row>

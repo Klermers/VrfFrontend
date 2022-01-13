@@ -103,6 +103,7 @@
           <v-file-input
             accept="image/*"
             label="File input"
+            color="#FCFCFC"
             @change="GetImageurl"
           ></v-file-input>
           </v-col>
@@ -139,6 +140,7 @@ export default {
     return{
     event:{
       titel:"",
+      date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
       description : "",
       users:{
         id: this.$store.getters.user.id
@@ -163,6 +165,7 @@ export default {
       console.log(this.event)
       axios.post('http://localhost:1212/event/createevent',{
             "titel": this.event.titel,
+            date: this.event.date,
             description: this.event.description,
             users: {
                 id: this.event.users.id
@@ -245,6 +248,8 @@ export default {
 };
 </script>
 
-<style scoped>
-
+<style>
+.mdi-myFileIcon::before {
+  color: #FCFCFC;
+}
 </style>

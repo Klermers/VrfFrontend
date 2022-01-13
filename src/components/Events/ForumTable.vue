@@ -20,7 +20,6 @@
           >
             <template>
               <v-select
-                v-model="sortBy"
                 flat
                 solo-inverted
                 hide-details
@@ -30,7 +29,6 @@
               ></v-select>
               <v-spacer></v-spacer>
                 <v-select
-                v-model="sortBy"
                 flat
                 solo-inverted
                 hide-details
