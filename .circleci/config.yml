@@ -30,9 +30,7 @@ jobs:
       #     pkg-manager: yarn
       - run:
           name: Run tests
-          command: |
-            npm i @vue/cli -g
-            vue-cli-service test:e2e --headless --spec tests/e2e/specs/test.js
+          command: yarn run test:unit 
 
 workflows:
   # Below is the definition of your workflow.
