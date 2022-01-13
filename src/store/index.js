@@ -16,7 +16,7 @@ const state = {
 }
 
 const actions = {
-    Login ({commit}, user) {
+    async Login ({commit}, user) {
         axios.post('http://localhost:1212/user/login',{
             "username": user.username,
             "password": user.password
@@ -29,7 +29,7 @@ const actions = {
             console.error(error);
         })
     },
-    GetUser({commit}){
+    async GetUser({commit}){
         axios.get(API_URL+ 'user/getuser',{
             headers: {
                 'Authorization':state.token
@@ -43,7 +43,7 @@ const actions = {
             console.error(error);
         })
     },
-    GetEvents({commit}){
+    async GetEvents({commit}){
           axios.get(API_URL+ 'event/getevents')
         .then(response =>{
             commit('SET_EVENTS', response.data)
@@ -53,7 +53,7 @@ const actions = {
             console.error(error);
         })
     },
-    GetEvent({commit},id){
+    async GetEvent({commit},id){
         axios.get(API_URL+ 'event/getevent/' + id)
         .then(response => {
             commit('SET_EVENT',response.data)
@@ -62,7 +62,7 @@ const actions = {
             console.error(error);
         })
     },
-    GetWorlds({commit}){
+    async GetWorlds({commit}){
         axios.get(API_URL+'world/worlds')
         .then(response =>{
             commit('SET_WORLDS',response.data)
@@ -71,7 +71,7 @@ const actions = {
             console.error(error);
         })
     },
-    GetCategories({commit}){
+    async GetCategories({commit}){
         axios.get(API_URL+'category/categories')
         .then(response =>{
             commit('SET_CATEGORIES',response.data)
@@ -80,7 +80,7 @@ const actions = {
             console.error(error);
         })
     },
-    CreateEvent(event){
+    async CreateEvent(event){
         axios.post(API_URL+'event/createevent',{
             "titel": event.titel,
             description: "A event where people can get to know eachother",
