@@ -7,7 +7,7 @@
       >
       
         <v-slide-item
-          v-for="event in getterevents"
+          v-for="event in getterevents.slice(0, 6)"
           :key="event.title"
           v-slot="{ active, toggle }"
         >
@@ -24,16 +24,16 @@
               <v-expand-transition>
                 <div
                 v-if="hover"
-                class=" d-flex transition-fast-in-fast-out black darken-2 v-card--reveal white--text"
+                class="transition-fast-in-fast-out black darken-2 v-card--reveal white--text"
                 style="height: 100%;"
               >
               <v-row>
                 <v-col
-                class="d-flex justify-center"
+                class=""
                 cols="12"
                 sm="12"
                 >
-                <h1 class="align-self-start"  v-html="event.titel"> </h1>
+                <h1 class="d-flex justify-center"  v-html="event.titel"> </h1>
                 </v-col>
                 <v-col
                 cols="12"
