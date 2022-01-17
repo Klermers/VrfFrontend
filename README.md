@@ -1,5 +1,11 @@
 # vrffrontend
+Vrf is the frontend part of my application. This is made using vue. People can use this frontend to create and join event with users. 
+This frontend is supported by my api Vrf3 and the cloudinary api.
 
+# Download my backend(CVrf3)
+```
+https://github.com/Klermers/vrf3
+```
 ## Project setup
 ```
 npm install
@@ -9,16 +15,3 @@ npm install
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
