@@ -32,8 +32,10 @@
       sm="1"
     
     >
-    <v-btn @click="$router.push('/createevent')"
-    v-if="isloggedin"
+    <v-btn 
+    class="button"
+    v-if="isloggedin" 
+    @click="$router.push('/createevent')"
      depressed
      color="#FF4E9F"
       >

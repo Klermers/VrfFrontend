@@ -32,6 +32,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "jest-sonar-reporter": "^2.0.0",
     "node-sass": "^6.0.1",
     "sass": "^1.32.13",
     "sass-loader": "^10.1.1",
@@ -44,6 +45,9 @@
     "root": true,
     "env": {
       "node": true
+    },
+    "jest": {
+      "testResultsProcessor": "jest-sonar-reporter"
     },
     "extends": [
       "plugin:vue/essential",
